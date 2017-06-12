@@ -1,9 +1,11 @@
 package com.leo.android.sqlite;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,16 +48,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
 
             case R.id.Add_Button:
+                contentValues.put(DBHelper.KEY_NAME, name);
+                contentValues.put(DBHelper.KEY_MAIL, email);
 
+                database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
                 break;
             case R.id.Read_Button:
+                Cursor cursor = database.query(DBHelper.TABLE_CONTACTS, null, null, null, null, null, null);
 
+                if (cursor.moveToFirst()){
+                    int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
+                    int nameIndex = cursor.getColumnIndex(DBHelper.KEY_NAME);
+                    int mailIndex = cursor.getColumnIndex(DBHelper.KEY_MAIL);
+
+                    do {
+                        Log.d("mLog", "ID = " + cursor.getInt(idIndex) +
+                                " name = " + cursor.getString(nameIndex) +
+                                ", email = " + cursor.getString(mailIndex));
+                    } while (cursor.moveToNext());
+
+                } else Log.d("mLog", "0 rows");
+
+                cursor.close();
                 break;
             case R.id.Clear_Button:
-
+                database.delete(DBHelper.TABLE_CONTACTS, null, null);
                 break;
 
         }
+
+        mDBHelper.close();
 
     }
 }
