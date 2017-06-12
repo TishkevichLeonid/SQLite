@@ -4,10 +4,10 @@
 
 ![Image alt](https://github.com/TishkevichLeonid/SQLite/raw/master/1.png)
 
-После ввода некоторых данных
+После ввода данных, кнопка READ показывает данные в Log
 
 ![Image alt](https://github.com/TishkevichLeonid/SQLite/raw/master/2.png)
 
-Очистка базы данных
+Очистка базы данных и чтение
 
 ![Image alt](https://github.com/TishkevichLeonid/SQLite/raw/master/3.png)
