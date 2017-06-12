@@ -12,8 +12,8 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button mAddBtn, mReadBtn, mClearBtn;
-    private EditText mNameText, mEmailText;
+    private Button mAddBtn, mReadBtn, mClearBtn, mUpdateBtn, mDeleteBtn;
+    private EditText mNameText, mEmailText, mIdText;
     private DBHelper mDBHelper;
 
     @Override
@@ -25,6 +25,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mNameText = (EditText) findViewById(R.id.Name);
         mEmailText = (EditText) findViewById(R.id.Email);
+        mIdText = (EditText) findViewById(R.id.IdText);
+
+        mUpdateBtn = (Button) findViewById(R.id.Update_Button);
+        mUpdateBtn.setOnClickListener(this);
+
+        mDeleteBtn = (Button) findViewById(R.id.Delete_Button);
+        mDeleteBtn.setOnClickListener(this);
 
         mAddBtn = (Button) findViewById(R.id.Add_Button);
         mAddBtn.setOnClickListener(this);
@@ -44,8 +51,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         String name = mNameText.getText().toString();
         String email = mEmailText.getText().toString();
+        String id = mIdText.getText().toString();
 
         switch (v.getId()){
+
+            case R.id.Update_Button:
+                if (id.equalsIgnoreCase("")) {
+                    break;
+                }
+                contentValues.put(DBHelper.KEY_MAIL, email);
+                contentValues.put(DBHelper.KEY_NAME, name);
+
+                int updateCount = database.update(DBHelper.TABLE_CONTACTS, contentValues, DBHelper.KEY_ID + "= ?", new String[] {id});
+
+                Log.d("mLog", "Update rows count = " + updateCount);
+
+            case R.id.Delete_Button:
+                if (id.equalsIgnoreCase("")) {
+                    break;
+                }
+
+                int delCount = database.delete(DBHelper.TABLE_CONTACTS, DBHelper.KEY_ID + "=" + id, null);
+                Log.d("mLog", "delete rows count = " + delCount);
 
             case R.id.Add_Button:
                 contentValues.put(DBHelper.KEY_NAME, name);

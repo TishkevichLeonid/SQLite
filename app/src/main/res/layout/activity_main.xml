@@ -6,6 +6,13 @@
     android:orientation="vertical">
 
     <EditText
+        android:id="@+id/IdText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Id"
+        />
+
+    <EditText
         android:id="@+id/Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,6 +24,25 @@
         android:hint="Email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/Update_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update"/>
+
+        <Button
+            android:id="@+id/Delete_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"/>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
