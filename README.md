@@ -8,6 +8,10 @@
 
 ![Image alt](https://github.com/TishkevichLeonid/SQLite/raw/master/2.png)
 
-Очистка базы данных и чтение
+Кнопка UPDATE обновляет поле данных по введенному id, DELETE удаляет строку по id
 
 ![Image alt](https://github.com/TishkevichLeonid/SQLite/raw/master/3.png)
+
+Кнокпка CLEAR убирает данные из базы данных
+
+![Image alt](https://github.com/TishkevichLeonid/SQLite/raw/master/4.png)
